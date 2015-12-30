@@ -1,33 +1,49 @@
 #include <iostream>
+#include <fstream>
 #include <bitset>
-#include "hand.cpp"
-#include "deck.cpp"
-#include "fast_eval.c"
+#include <ctime>
+#include "game.cpp"
+
+
+
 
 
 
 int main()
 {
-  Deck d = Deck();
-  Hand h1 = Hand();
-  h1.addCard(d.getRandomCard());
-  h1.addCard(d.getRandomCard());
-  h1.addCard(d.getRandomCard());
-  h1.addCard(d.getRandomCard());
-  h1.addCard(d.getRandomCard());
-  h1.printHand();
-  
-  Hand h2 = Hand();
-  h2.addCard(d.getRandomCard());
-  h2.addCard(d.getRandomCard());
-  h2.addCard(d.getRandomCard());
-  h2.addCard(d.getRandomCard());
-  h2.addCard(d.getRandomCard());
-  h2.printHand();
-  
-  int value1 = eval_5hand_fast(h1.getCardHash(1), h1.getCardHash(2), h1.getCardHash(3), h1.getCardHash(4), h1.getCardHash(5));
-  int value2 = eval_5hand_fast(h2.getCardHash(1), h2.getCardHash(2), h2.getCardHash(3), h2.getCardHash(4), h2.getCardHash(5));
-  std::cout << "\n\nValue: " << value1;
-  std::cout << "\nValue: " << value2;
-  
+	int numPlayers;
+	//1. Take input for number of players
+	std::cout << "\nNumber of Players: ";
+	std::cin >> numPlayers;
+	
+	//1.5 Initialize Game
+	Game g = Game(numPlayers);
+	
+	
+	while(true) {
+		//1.9 Start new Round
+		g.startNewRound();
+		
+		//2. Take input for 2 cards		
+		std::cout << "\nHand: (ex: 4S JD)\n";
+		string myHand;
+		std::cin >> myHand;	
+		g.setMyHand(myHand);
+		
+		
+		//3. Get winning percentage
+		g.get_winning_percentage();
+		
+		//4. Take input for next 3 cards
+		
+		//5. Get winning percentage
+		
+		//6. Take input for next card
+		
+		//7. Get winning percentage
+		
+		//8. Take input for next card
+		
+		//9. Get winning percentage
+	}
 }
